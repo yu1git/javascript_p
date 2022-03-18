@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<style>
+    .waku {
+        border: 2px dotted rgb(134, 227, 255);
+        margin: 20px 20px;
+        padding: 1% 2%;
+        border-radius: 25px;
+    }
+
+    ul {
+        display: flex;
+    }
+
+    li {
+        width: 80px;
+        height: 50px;
+        border: 1px rgb(134, 227, 255) solid;
+        list-style: none;
+        margin: 5px 5px;
+        text-align: center;
+        line-height: 50px;
+        vertical-align: middle;
+    }
+
+    .seikai {
+        background-color: gold;
+        color: #ffffff;
+    }
+
+    .fuseikai {
+        background-color: #87cefa;
+        color: #ffffff;
+    }
+
+    i {
+        color: gold;
+    }
+
+    #kaisetu {
+        text-align: center;
+        border: 1px gold solid;
+        margin: 15px 20rem;
+        border-radius: 25px;
+        padding: 2% ;
+
+    }
+    .kaisetubun{
+        text-align: center;
+        margin: 0 auto;
+        width: 300px;
+        padding: 2%;
+    }
+</style>
+
+<body>
+    <div class="waku">
+        <p>はじめまして。<p id="name"></p>さん</p>
+        <p><i class="material-icons">lightbulb</i>問題文</p>
+        <ul>
+            <li id="A">A</li>
+            <li id="B">B</li>
+            <li id="C">C</li>
+            <li id="D">D</li>
+        </ul>
+        <p id="kaisetu">解説</p>
+    </div>
+    <script>
+        function removeClass(answerId) {
+            document.getElementById(answerId).removeAttribute("class");
+            document.getElementById(answerId).textContent = answerId;
+        }
+
+        document.getElementById("A").addEventListener("click", function () {
+            this.setAttribute("class", "seikai");
+            this.textContent = "正解";
+            removeClass("B");
+            removeClass("C");
+            removeClass("D");
+        })
+        document.getElementById("B").addEventListener("click", function () {
+            //やりたいこと
+            this.setAttribute("class", "fuseikai");//クラスを追加、変更
+            this.textContent = "不正解";
+            removeClass("A");
+            removeClass("C");
+            removeClass("D");
+        })
+        document.getElementById("C").addEventListener("click", function () {
+            this.textContent = "不正解";
+            this.setAttribute("class", "fuseikai");
+            removeClass("B");
+            removeClass("A");
+            removeClass("D");
+        })
+        document.getElementById("D").addEventListener("click", function () {
+            this.textContent = "不正解";
+            this.setAttribute("class", "fuseikai");
+            removeClass("B");
+            removeClass("C");
+            removeClass("A");
+        })
+        document.getElementById("kaisetu").addEventListener("click", function () {
+            document.getElementById("kaisetu").removeAttribute("class");
+            this.setAttribute("class", "kaisetubun");
+            this.textContent = "Aは～～～～～～～～～～～～～～～～";
+        })
+        
+        // document.addElementById("name")(function{
+        // let name=prompt("名前を入力してください")||"未入力";})
+    </script>
+</body>
+
+</html>

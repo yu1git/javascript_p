@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul {
+            list-style: none;
+            margin-left: -20px;
+        }
+
+        li {
+            width: 800px;
+            height: 75px;
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 24px;
+            border: 1px black solid;
+            background-color: yellowgreen
+        }
+
+        .mondai {
+            width: 800px;
+            height: 200px;
+            margin-left: 20px;
+            padding: 10px;
+            font-size: 24px;
+            border: 1px black solid;
+            background-color: orange;
+        }
+
+        .true {
+            background-color: blue;
+            color: white;
+        }
+
+        .false {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mondai">
+        <p>日本で二番目に高い山は？</p>
+    </div>
+    <ul>
+        <!-- <li id="A">A</li>
+        <li id="B">B</li>
+        <li id="C">C</li>
+        <li id="D">D</li> -->
+    </ul>
+</body>
+<script>
+   
+    answerObject = {
+        "A" : "北岳",
+        "B" : "槍ヶ岳",
+        "C" : "奥穂高岳",
+        "D" : "剱岳",
+        "E" : "立山"
+    }
+    buttons =Object.keys(answerObject)//  ["A", "B", "C", "D","E"]→Object.keys(answerObject)
+
+    function createLi(button) {//button=A,B,C,D,E
+        const li = document.createElement("li");
+        li.textContent = answerObject[button];//button→answerObject[button]に変えて、山の名前を入れる
+        li.setAttribute("id", button);
+        document.querySelector("ul").appendChild(li);
+    }
+    for(const btn of buttons){
+        createLi(btn)
+    }
+
+//htmlに書いていたABCDをjsで作る。上にfor文にまとめる
+    // const li = document.createElement("li");
+    // li.textContent = "A";
+    // li.setAttribute("id", "A");
+    // document.querySelector("ul").appendChild(li);
+
+    // const liB = document.createElement("li");
+    // liB.textContent = "B";
+    // liB.setAttribute("id", "B");
+    // document.querySelector("ul").appendChild(liB);
+
+    // const liC = document.createElement("li");
+    // liC.textContent = "C";
+    // liC.setAttribute("id", "C");
+    // document.querySelector("ul").appendChild(liC);
+
+    // const liD = document.createElement("li");
+    // liD.textContent = "A";
+    // liD.setAttribute("id", "A");
+    // document.querySelector("ul").appendChild(liD);
+
+
+    function removeAnswer(answer) {//answer=A,B,C,D,E
+        const answerElement = document.getElementById(answer);
+        answerElement.removeAttribute("class");
+
+        answerElement.textContent = answerObject[answer];
+    }
+
+    function clickButton(clickButton) {
+        document.getElementById(clickButton).addEventListener("click", function () {
+            if (clickButton === "A") {
+                this.setAttribute("class", "true");
+                this.textContent = "正解";
+            } else {
+                this.setAttribute("class", "false");
+                this.textContent = "不正解";
+            }
+            for (const button of buttons) {
+                if (button !== clickButton) {
+                    removeAnswer(button)
+                }
+            }
+        })
+    }
+
+    for (const btn of buttons) {
+        clickButton(btn)
+    }
+
+</script>
+
+</html>

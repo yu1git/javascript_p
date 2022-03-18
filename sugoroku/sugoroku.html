@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sugoroku</title>
+
+    <style>
+        .saikoro {
+            height: 100px;
+            width: 100px;
+            text-align: center;
+            line-height: 90px;
+            border: 1px solid black;
+            font-size: 20px;
+        }
+
+        .sugoroku {
+            display: grid;
+            /* grid-template-columns: repeat(5, 1fr); */
+            width: 500px;
+            margin: 20px;
+        }
+
+        .sugorokuMasu {
+            display: block;
+            height: 76px;
+            width: 100px;
+            text-align: center;
+            line-height: 30px;
+            border: 1px solid black;
+            background-color: rgba(156, 227, 255,0.3);
+            font-size: 20px;
+        }
+
+        .ima{
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ue"></div>
+    
+    <div class="sugoroku">
+        <table>  
+            <tr id="masu1" class="sugorokuMasu"><td>スタート</td></tr>
+            <tr id="masu2" class="sugorokuMasu"></tr>
+            <tr id="masu3" class="sugorokuMasu"></tr>
+            <tr id="masu4" class="sugorokuMasu"><td>1マス戻る</td></tr>
+            <tr id="masu5" class="sugorokuMasu"></tr>
+            <tr id="masu6" class="sugorokuMasu"></tr>
+            <tr id="masu7" class="sugorokuMasu"></tr>
+            <tr id="masu8" class="sugorokuMasu"></tr>
+            <tr id="masu9" class="sugorokuMasu"></tr>
+            <tr id="masu10" class="sugorokuMasu"><td>ゴール</td></tr>
+            
+        </table>
+
+    </div>
+</body>
+<script src="sugoroku.js"></script>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    	
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
+</head>
+<style>
+    ul{
+        display: flex;
+    }
+    li{
+        width: 80px;
+        height: 50px;
+        border: 1px rgb(134, 227, 255) solid;
+        list-style: none;
+        margin: 5px 5px;
+        text-align: center;
+        line-height: 50px;
+        vertical-align: middle;
+    }
+    .seikai{
+        background-color:gold;
+        color: #ffffff;
+    }
+    .fuseikai{
+        background-color: #87cefa;
+        color: #ffffff;
+    }
+    i{
+        color: gold;
+    }
+
+</style>
+<body>
+    <p><i class="material-icons">lightbulb</i>問題文</p>
+    <ul>
+        <li id="A">A</li>
+        <li id="B">B</li>
+        <li id="C">C</li>
+        <li id="D">D</li>
+    </ul>
+    <p><i class="material-icons">lightbulb</i>問題文</p>
+    <ul>
+        <li class="A">A</li>
+        <li class="B">B</li>
+        <li class="C">C</li>
+        <li class="D">D</li>
+    </ul>
+    <script>
+        let clicked=false;//フラグ。ifで正解押したら不正解が押せなくなる
+        document.getElementById("A").addEventListener("click",function(){
+            //やりたいこと
+            this.setAttribute("class","seikai");
+            document.getElementById("B").removeAttribute("class");
+            document.getElementById("B").textContent="B"
+            this.textContent="正解！";
+            clicked=true;
+        })
+        document.getElementById("B").addEventListener("click",function(){
+            if(clicked==false){
+            //やりたいこと
+            this.setAttribute("class","fuseikai");//クラスを追加、変更
+            this.textContent="不正解";
+            }
+        })
+        document.getElementById("C").addEventListener("click",function(){
+            if(clicked==false){
+            this.textContent="不正解";
+            this.setAttribute("class","fuseikai");
+            }
+        })
+        document.getElementById("D").addEventListener("click",function(){
+            if(clicked==false){
+            this.textContent="不正解";
+            this.setAttribute("class","fuseikai");
+            }
+            document.getElementById("A").setAttribute("class","fuseikai");//DをおしたらAが押せなくなる。正解の文字は表示されてしまうので△
+        })
+        // document.getElementsByClassName("A").addEventListener("click",function(){
+        //     //やりたいこと
+        //     this.setAttribute("class","seikai");
+        //     this.textContent="正解！";
+        //     clicked=true;
+        // })
+        // document.getElementsByClassName("B").addEventListener("click",function(){
+        //     //やりたいこと
+        //     this.setAttribute("class","fuseikai");//クラスを追加、変更
+        //     this.textContent="不正解";
+            
+        // })
+        // document.getElementsByClassName("C").addEventListener("click",function(){
+        //     this.textContent="不正解";
+        //     this.setAttribute("class","fuseikai");
+        // })
+        // document.getElementsByClassName("D").addEventListener("click",function(){
+        //     this.textContent="不正解";
+        //     this.setAttribute("class","fuseikai");
+        // })
+    </script>
+</body>
+</html>

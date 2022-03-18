@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+    <style>
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="800" height="600"></canvas>
+</body>
+<script>
+const canvas = document.getElementById("canvas")
+
+const drawCanvas = (x, y) => {
+
+    const ctx = canvas.getContext('2d');
+
+    // パスを開始する
+    ctx.beginPath();
+    // 円のパスを設定する
+    ctx.arc(x, y, 50, 0, Math.PI * 2, true);//*2　をとれば半円
+    // パスを塗りつぶして描く
+    // ctx.fill();
+    //中空白の円
+    ctx.stroke();
+    
+}
+
+for(let i=1; i<10; i++){
+    drawCanvas(100*i,200)
+}
+
+canvas.addEventListener("click", (evt) => {
+    let x = evt.clientX;
+    let y = evt.clientY;
+
+    drawCanvas(x, y)
+})
+    
+
+
+
+</script>
+</html>

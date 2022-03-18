@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul {
+            list-style: none;
+            margin-left: -20px;
+        }
+
+        li {
+            width: 800px;
+            height: 75px;
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 24px;
+            border: 1px black solid;
+            background-color: yellowgreen
+        }
+
+        .mondai {
+            width: 800px;
+            height: 200px;
+            margin-left: 20px;
+            padding: 10px;
+            font-size: 24px;
+            border: 1px black solid;
+            background-color: orange;
+        }
+
+        .true {
+            background-color: blue;
+            color: white;
+        }
+
+        .false {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mondai">
+        <p>問題文</p>
+    </div>
+    <ul>
+        <li id="A">A</li>
+        <li id="B">B</li>
+        <li id="C">C</li>
+        <li id="D">D</li>
+    </ul>
+</body>
+<script>
+    const answer_A = document.getElementById("A");//const=定数。値の変更ができない。let=変数。verはバグがあるため使わない。*型の宣言ではなくキーワード
+    const answer_B = document.getElementById("B");
+    const answer_C = document.getElementById("C");
+    const answer_D = document.getElementById("D");
+
+    function removeClass(answer) {
+        // answerは仮引数
+        const answerElement = document.getElementById(answer);
+        answerElement.removeAttribute("class");
+        answerElement.textContent = answer;
+    }
+
+    button = ["A", "B", "C", "D"]
+
+    function clickButton(click) {//buttonは配列なので、()には他の言葉を入れる
+        document.getElementById(click).addEventListener("click", function () {
+            if (click === "A") {
+                this.setAttribute("class", "true");
+                this.textContent = "正解！";
+            } else {
+                this.setAttribute("class", "false");
+                this.textContent = "不正解";
+            }
+
+            for (const btn of button) {
+                if (btn !== click) {
+                    removeClass(btn)
+                }
+            }
+        })
+    }
+
+    clickButton("A");
+    clickButton("B");
+    clickButton("C");
+    clickButton("D");
+
+
+
+    // document.getElementById("A").addEventListener("click", function () {
+    //     this.setAttribute("class", "true");
+    //     this.textContent = "正解！";
+    //     for (const btn of button) {
+    //         if (btn !== "A") {
+    //             removeClass(btn)
+    //         }
+    //     }
+
+    //     //if文のelseを消すために否定にする
+    //     // for(const btn of button){
+    //     //     if(btn==="A"){
+    //     //         //何もしない
+    //     //     }else{
+    //     //         removeClass(btn)
+    //     //     }
+    //     // }
+
+    //     //if文に
+    //     // button=["B","C","D"];
+    //     // for(const btn of button){
+    //     //     removeClass(btn);
+    //     // }
+    //     //for文を上記のようにfor-of文に書き換える
+
+    //     // for(let i=0;i<3;i++){
+    //     //     removeClass(button[i])};
+    //     //上のように配列にボタンの文字を入れて、for文にまとめる
+    //     // removeClass("B");
+    //     // removeClass("C");
+    //     // removeClass("D");
+    //     //document.getElementById("B").→answeer_B.→上記のように関数でまとめて、個々に呼び出す
+
+    //     // answer_B.removeAttribute("class");
+    //     // answer_B.textContent = "B";
+    //     // answer_C.removeAttribute("class");
+    //     // answer_C.textContent = "C";
+    //     // answer_D.removeAttribute("class");
+    //     // answer_D.textContent = "D";
+
+    //     // document.getElementById("B").removeAttribute("class");//Aクリック→Bボタンのクリック後表示が消える
+    //     // document.getElementById("B").textContent = "B";//Aクリック→BボタンにBと表示
+    //     // document.getElementById("C").removeAttribute("class");
+    //     // document.getElementById("C").textContent = "C";
+    //     // document.getElementById("D").removeAttribute("class");
+    //     // document.getElementById("D").textContent = "D";
+    // })
+    // document.getElementById("B").addEventListener("click", function () {
+    //     this.setAttribute("class", "false");
+    //     this.textContent = "不正解";
+    //     removeClass("A");
+    //     removeClass("C");
+    //     removeClass("D");
+    // })
+    // document.getElementById("C").addEventListener("click", function () {
+    //     this.setAttribute("class", "false");
+    //     this.textContent = "不正解";
+    //     removeClass("B");
+    //     removeClass("A");
+    //     removeClass("D");
+    // })
+    // document.getElementById("D").addEventListener("click", function () {
+    //     this.setAttribute("class", "false");
+    //     this.textContent = "不正解";
+    //     removeClass("B");
+    //     removeClass("C");
+    //     removeClass("A");
+    // })
+</script>
+
+</html>

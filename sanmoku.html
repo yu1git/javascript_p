@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三目並べ</title>
+</head>
+<style>
+    #masu {
+        width: 500px;
+        display: grid;
+        column-gap: 0;
+        margin: 0 auto;
+        grid-template-columns: repeat(3, 60px);
+
+    }
+
+    .item {
+        border: 1px solid #00bfff;
+        width: 60px;
+        height: 60px;
+    }
+    .fin{
+        background-color: #afeeee;
+    }
+</style>
+
+<body>
+    <div id="masu">
+        <div id="i1" class="item"> </div>
+        <div id="i2" class="item"> </div>
+        <div id="i3" class="item"> </div>
+        <!---->
+        <div id="i4" class="item"> </div>
+        <div id="i5" class="item"> </div>
+        <div id="i6" class="item"> </div>
+        <!---->
+        <div id="i7" class="item"> </div>
+        <div id="i8" class="item"> </div>
+        <div id="i9" class="item"> </div>
+    </div>
+</body>
+<script>
+    // const it = document.getElementById("i1");
+    // i=["i1","i2","i3","i4","i5","i6","i7","i8","i9"]
+
+    // function createLi(button) {
+    //     const li = document.createElement("li");
+    //     li.setAttribute("class", item);
+    //     document.querySelector("ul").appendChild(li);
+    // }
+
+    
+    const i=new Array(9);
+    const i = document.getElementsByClassName("item").addEventListener("click", function () {
+        let count = 0;
+        count++
+        
+        if (count%2 == 0) {
+            this.textContent = "〇";
+            this.setAttribute("class","fin");
+        } else {
+            this.textContent = "×";
+        }
+
+
+        //配列.every((n)=>n==='〇')
+    })
+</script>
+
+
+</html>

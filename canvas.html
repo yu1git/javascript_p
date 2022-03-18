@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+    <style>
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="800" height="600"></canvas>
+</body>
+<script>
+const canvas = document.getElementById("canvas")
+
+const drawCanvas = (x, y) => {
+
+    const ctx = canvas.getContext('2d');
+    //ctx.fillRect(100,100,100,100);//塗りつぶし
+    // ctx.fillRect(25, 25, 100, 100);
+    // ctx.clearRect(45, 45, 60, 60);//消す
+    // ctx.strokeRect(50, 50, 50, 50);//中は白の枠
+    ctx.fillRect(x, y, 100, 100);
+    ctx.clearRect(x+20, y+20, 60, 60);
+    ctx.strokeRect(x+25, y+25, 50, 50);
+    ctx.fillStyle='blue';
+    
+}
+
+//  drawCanvas()
+
+canvas.addEventListener("click", (evt) => {
+    setInterval(function(){ //setInterval(関数,時間ミリ秒)
+    let x = evt.clientX;
+    let y = evt.clientY;
+
+    drawCanvas(x, y)
+})
+},10)
+
+</script>
+</html>

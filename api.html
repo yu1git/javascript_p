@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+      <div id="news"></div>
+  </body>
+  <script>
+    // API配信のURL
+    // 130000は東京のエリアコード
+
+    let url_Tokyo = "https://www.jma.go.jp/bosai/forecast/data/overview_forecast/130000.json"
+
+    const getWeather = async (url) => {
+        // 指定したurlのAPIからjsonデータを取得
+        const response = await fetch(url)//fetch():指定したURLからデータを取得
+        // jsonデータをオブジェクトに変換する
+        return response.json()
+    }
+
+    const getData = async () => {
+        data = await getWeather(url_Tokyo);
+        console.log(data);
+        console.log(data.publishingOffice);
+        console.log(data.reportDatetime);
+        console.log(data.targetArea);
+        console.log(data.text);
+
+        document.getElementById("news").textContent=data.text;
+    }
+
+    getData()
+  </script>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ビンゴゲームのカード</title>
+</head>
+<style>
+    #card {
+        display: grid;
+        grid-template-columns: repeat(5, 100px);
+        grid-template-rows: repeat(5, 100px);
+        grid-auto-flow: column;
+        width: 500px;
+        margin: 0 auto;
+    }
+
+    #card div {
+        height: 100px;
+        width: 100px;
+        border: 1px solid black;
+        line-height: 150px;
+    }
+</style>
+
+<body>
+    <h1>ビンゴゲームのカード</h1>
+    <div id="card">
+    </div>
+</body>
+<script>
+    /***************
+    グローバル変数
+    ****************/
+    //手数を数える
+    let count = 0;
+
+    /***************
+    HTMLの操作
+    ***************/
+    
+    const zen=[];
+
+    //25個のマスを作る
+    for (let i = 0; i < 25; i++) {
+        const masu = document.createElement("div");
+        //一番左の列
+        // while (i < 5) {
+        //マスにランダムな数値を入れる
+        // }
+        //二列目
+        // while (5 <= i < 10) {
+        //マスにランダムな数値を入れる
+        // }
+        document.querySelector("#card").appendChild(masu);
+        //マスに数字を表示
+        let num=view() ;
+        for(let i=0; i<num.length;i++){
+        masu.textContent = num;}
+        
+    }
+
+    //
+    //
+    //
+    /***************
+    イベントハンドラの割り当て
+    ****************/
+    //ページを読み込んだら、カードにランダムな数字を表示
+    window.addEventListener("load", load);
+
+    //クリックに反応
+    //ビンゴになったら何か表示する
+
+    /***************
+    イベントハンドラ
+    ****************/
+
+    //ページを読み込んだら、カードにランダムな数字を表示
+    function load() {
+        
+        
+    }
+
+    /***************
+    関数
+    ****************/
+
+    //マスに数字を表示
+    function view() {
+        //一列目
+        let iti = []
+        for (let i = 0; i < 5; i++) {
+            iti[i].push(random(20, 0));
+        }
+
+        //二列目
+        let ni = []
+        for (let i = 0; i < 5; i++) {
+            ni[i].push(random(40, 21));
+        }
+        //三列目
+        let san = []
+        for (let i = 0; i < 5; i++) {
+            san[i].push(random(60, 41));
+        }
+        //四列目
+        let yon = []
+        for (let i = 0; i < 5; i++) {
+            yon[i].push(random(80, 61));
+        }
+        //五列目
+        let go = []
+        for (let i = 0; i < 5; i++) {
+            go[i].push(random(100, 81));
+        }
+        zen=iti.concat(ni,san,yon,go);
+        return zen;
+    }
+
+    //マスにランダムな数値を入れる
+    function random(ue, sita) {
+        cardNum = Math.floor(Math.random() * (ue + 1 - sita)) + sita;
+        return cardNum;
+    }
+
+    /***************
+    デバック
+    ****************/
+
+
+</script>
+
+</html>

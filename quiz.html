@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+</head>
+<style>
+    li{
+        width: 80px;
+        height: 50px;
+        border: 1px rgb(134, 227, 255) solid;
+    }
+    .fuseikai{
+        background-color: #40e0d0;
+        color: #ffffff;
+    }
+    .seikaikamo{
+        background-color: pink;
+    }
+</style>
+<body>
+    <p>問題文</p>
+    <ul>
+        <li id="A">A</li>
+        <li id="B">B</li>
+        <li id="C" class="fuseikai">C</li>
+        <li id="D">D</li>
+    </ul>
+    <script>
+        document.getElementById("A").addEventListener("click",function(){
+            //やりたいこと
+            this.style.backgroundColor="gold";//css
+            this.style.color="#ffffff";
+            console.log(this);//thisがどれか表示
+            this.textContent="正解！";
+        })
+        document.getElementById("B").addEventListener("click",function(){
+            //やりたいこと
+            this.setAttribute("class","fuseikai");//クラスを追加、変更
+            this.textContent="不正解"
+
+        })
+        document.getElementById("C").addEventListener("click",function(){
+            //やりたいこと
+            console.log("Hallo World!");
+            this.style.color="#ffffff";
+            this.textContent="不正解";
+            this.setAttribute("class","seikaikamo")
+        })
+        document.getElementById("D").addEventListener("click",function(){
+            //やりたいこと
+            console.log("Hallo World!");
+            this.style.backgroundColor="#87cefa";//css
+            this.style.color="#ffffff";
+            this.textContent="不正解";
+            
+        })
+    </script>
+</body>
+</html>

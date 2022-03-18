@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #rico {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="gzo">
+    </div>
+</body>
+<script>
+    //画面に画像を表示する
+    document.getElementById("gzo").innerHTML = '<img src="rico.png" id="rico">';
+
+    //画像の移動
+    //移動位置を入れる変数
+    let y = 0;//上下
+    let x = 0;//左右
+
+    const rico = document.getElementById('rico');
+
+    //何かキーが押された時、keydownfuncという関数を呼び出す
+    addEventListener("keydown", keydownfunc);
+    //キーが押されたときに呼び出される関数
+    function keydownfunc(event) {
+        //押されたボタンに割り当てられた数値をkey_codeに代入
+        let key_code = event.keyCode;
+
+        if (key_code === 37) x -= 32;		//「左ボタン」が押されたとき、xの値から32を引き算する
+        if (key_code === 38) y -= 32;		//「上ボタン」が押されたとき、yの値から32を引き算する
+        if (key_code === 39) x += 32;		//「右ボタン」が押されたとき、xの値に32を足し算する
+        if (key_code === 40) y += 32;		//「下ボタン」が押されたとき、yの値に32を足し算する
+        //switchだとダメだった。breakがあるから、反映ができなかったのかも？
+
+        //画像の位置を反映させる
+        rico.style.top = y + "px";
+        rico.style.left = x + "px";
+    }
+    
+</script>
+
+</html>
